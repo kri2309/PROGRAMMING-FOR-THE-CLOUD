@@ -18,6 +18,17 @@ app.get("/secret", (req, res) =>{
     }
 });
 
+app.post("/login", (req, res) => {
+    const email = req.query.email;
+    const password = req.query.password;
+    requests++;
+    if (email == "test@test.com" && password == "123") {
+      res.send("Hello test!");
+    } else {
+      res.send("Invalid credentials!");
+    }
+  });
+
 app.use(cors());
 //85ec3480-d832-494e-bdd8-2f52e083e76a
 
