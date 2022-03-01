@@ -1,37 +1,65 @@
-import Express  from "express";
-import cors from "cors"
-import { v4 as uuid} from "uuid";
+import Express from "express";
+import cors from "cors";
+import { v4 as uuid } from "uuid";
+import session from "express-session";
+import { CreateUser } from "./db.js";
+
+//Session config
+const config = {
+  genid: (req) => uuid(),
+  secret: "keyboard cat",
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+};
 
 const app = Express();
-const PORT = 3001; 
-const SecretToken = uuid();
-let requests = 0; 
+app.use(cors());
+app.use(session(config));
 
+const PORT = 3001;
+let requests = 0;
+const secretToken = uuid();
 
-app.get("/secret", (req, res) =>{
-    const token = req.query.token;
-    requests++;
-    if(token === SecretToken){
-        res.send({result: 200, requests: requests,message:"This is a secret message"});
-    }else{
-        res.send({result: 403, message: "Invalid credentials"});
-    }
+app.get("/secret", (req, res) => {
+  const token = req.query.token;
+  requests++;
+  if (token === secretToken) {
+    res.send({
+      result: 200,
+      requests: requests,
+      message: "This is a very secret message.",
+    });
+  } else {
+    res.send({ result: 401, message: "Invalid token!" });
+  }
 });
 
 app.post("/login", (req, res) => {
-    const email = req.query.email;
-    const password = req.query.password;
-    requests++;
-    if (email == "test@test.com" && password == "123") {
-      res.send("Hello test!");
-    } else {
-      res.send("Invalid credentials!");
-    }
+  const email = req.query.email;
+  const password = req.query.password;
+  requests++;
+  if (email == "test@test.com" && password == "123") {
+    res.send({ result: "success", email: "test@test.com", name: "David" });
+  } else {
+    res.send({ result: "fail" });
+  }
+});
+
+app.post("/register", (req, res) => {
+  const email = req.query.email;
+  const password = req.query.password;
+  const name = req.query.name;
+  const surname = req.query.surname;
+  requests++;
+
+  CreateUser(name, surname, email, password).then((r) => {
+    console.log(r);
   });
 
-app.use(cors());
-//85ec3480-d832-494e-bdd8-2f52e083e76a
+  res.send({ result: "success", email: email, name: name });
+});
 
-console.log(SecretToken);
-app.listen(PORT, () =>
-    console.log("Server Listening on port: "+PORT))
+//console.log(secretToken);
+
+app.listen(PORT, () => console.log("Server Listening on port: " + PORT));

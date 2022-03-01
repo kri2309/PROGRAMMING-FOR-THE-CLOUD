@@ -25,7 +25,7 @@
                 <a class="nav-link" href="#">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="/frontend/login.html">Login</a>
+                <a class="nav-link" href="/frontend/login.html">Login</a>
               </li>
             </ul>
           </div>
@@ -36,6 +36,14 @@
        <div class="container pt-3 pb-3 mt-3 mb-3">
         <div class= "row">
         <form class="col-xl-4 col-lg-4 col-md-6 mx-auto">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="email" class="form-control" id="name" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="surname" class="form-label">Surname</label>
+                <input type="email" class="form-control" id="surname" aria-describedby="emailHelp">
+              </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -44,10 +52,14 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password">
           </div>
-          <div class="mb-3 form-register">
-            <a href="/frontend/register.html">Not yet registered? Register here!</a>
+          <div class="mb-3">
+            <label for="rpassword" class="form-label">Repeat Password</label>
+            <input type="password" class="form-control" id="rpassword">
           </div>
-          <button type="button" class="btn btn-primary" onclick="submitLoginInfo()">Login</button>
+          <div class="mb-3 form-register">
+            <a href="/frontend/login.html">Already registered? Login here!</a>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="submitRegisterInfo()">Register</button>
         </form>
       </div>
        </div>
