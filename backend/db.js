@@ -1,23 +1,39 @@
-import Firestore from "@google-cloud/firestore"
+import Firestore from "@google-cloud/firestore";
+import { createHmac } from "crypto";
 
-export const GOOGLE_APPLICATION_CREDENTIALS="./key.json"
+//Google Cloud key
+export const GOOGLE_APPLICATION_CREDENTIALS = "./key.json";
 
-const Firestore = require('@google-cloud/firestore');
-
+//Instantiating Firestore with project details
 const db = new Firestore({
-  projectId: 'programmingforthecloud-340711',
-  keyFilename: GOOGLE_APPLICATION_CREDENTIALS
-,
+  projectId: "pftc0000001",
+  keyFilename: GOOGLE_APPLICATION_CREDENTIALS,
 });
 
-const docRef = db.collection('PFC').doc('users');
+//Collection (Table)
+//Document (Row)
+//docRef selects the collection
+export async function CreateUser(name, surname, email, password) {
+  const docRef = db.collection("users").doc();
+  return await docRef.set({
+    name: name,
+    surname: surname,
+    email: email,
+    password: HashPassword(password),
+  });
+}
 
-export async function CreateUser(name, surname, eamil, password){
+export async function GetUser(email) {
+  const docRef = db.collection("users");
+  const snapshot = await docRef.where("email", "==", email).get();
+  let data = [];
+  snapshot.forEach((doc) => {
+    data.push(doc.data());
+  });
+  return data;
+}
 
-    return await docRef.set({
-        name: name,
-        surname: surname,
-        eamil: eamil,
-        password: password,
-    });
+export function HashPassword(password) {
+  const secret = "i<3PfC";
+  return createHmac("sha256", password).update(secret).digest("hex");
 }
