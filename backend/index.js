@@ -35,7 +35,7 @@ app.get("/register",(req, res) => {
   res.sendFile(path.join(__dirname,"../frontend/register.html"));
 });
 
-const PORT = 3001;
+const PORT = 80;
 let requests = 0;
 const secretToken = uuid();
 
