@@ -4,7 +4,7 @@ let profile = document.getElementById("profile");
 let signInContainer = document.getElementById("signInContainer");
 
 const authenticateReq = async (token) => {
-  const url = `https://dev-deg.me/auth?token=${token}`;
+  const url = `https://kristinaborgolivier.me/auth?token=${token}`;
   const headers = {
     "Content-Type": "text/html",
     "Access-Control-Allow-Origin": "*",
