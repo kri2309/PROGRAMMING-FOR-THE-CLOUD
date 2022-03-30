@@ -4,6 +4,7 @@ import https from "https";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
+
 import auth from "./routes/auth.js";
 import upload from "./routes/upload.js";
 
@@ -70,6 +71,9 @@ app.use(cors());
 
 //route auth traffic to auth.js
 app.use("/auth", auth);
+
+//route upload traffic to upload.js
+app.use("/upload", upload);
 
 //Delivering index.html;
 app.get("/", (req, res) => {
