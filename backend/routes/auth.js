@@ -21,16 +21,24 @@ auth.route("/").post((req, res) => {
     })
     .then((ticket) => {
       if (ticket) {
-        const payload = ticket.getPayload();
-        res.send({
-          status: "200",
-          name: payload.name,
-          email: payload.email,
-          picture: payload.picture,
-          token: token,
-          expiry: payload.exp,
-        });
-        console.log(`${payload.name} has logged in.`);
+        try{
+          const payload = ticket.getPayload();
+          res.send({
+            status: "200",
+            name: payload.name,
+            email: payload.email,
+            picture: payload.picture,
+            token: token,
+            expiry: payload.exp,
+          });
+          console.log(`${payload.name} has logged in.`);
+
+        }
+        catch(error){
+          console.log(error);
+          res.send({ status: "401" });
+        };
+
       } else {
         res.send({ status: "401" });
       }
