@@ -87,7 +87,6 @@ app.post("/login", (req, res) => {
   GetUser(email).then((response)=>{
     if(response.length > 0){
       console.log("found user");
-
       res.send({ result: "exists", reason: "Found email", credits: response[0].credits});
 
     }
