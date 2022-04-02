@@ -34,9 +34,11 @@ const authenticateReq = async (token) => {
     document.getElementById("picture").src = picture;
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
+    return email;
   } else {
     profile.style.display = "none";
     signInContainer.style.display = "inline";
+    return null;
   }
 };
 
