@@ -29,8 +29,8 @@ export async function GetDocument(collection, valueType, value) {
 export async function CreateUser(email) {
   const docRef = db.collection("userData").doc();
   return await docRef.set({
-    email: email,
     credits: 10,
+    email: email
   });
 }
 
