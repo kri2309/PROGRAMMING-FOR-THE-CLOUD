@@ -81,7 +81,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/login", async function(req, res) {
+app.post("/login", (req, res) => {
   const email = req.query.email;
   console.log("recieved email getting user");
   GetUser(email).then((response)=>{
@@ -91,9 +91,9 @@ app.post("/login", async function(req, res) {
 
     }
     else{
-     const r = await CreateUser(email);
+      CreateUser(email);
       console.log("created user");
-      res.send({ result: "created", reason: "Created email", credits: response[0].credits});
+      res.send({ result: "created", reason: "Created email", credits: 8});
     }
   });
 });
