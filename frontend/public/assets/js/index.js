@@ -2,6 +2,7 @@ let signInButton = document.getElementById("signIn");
 let signOutButton = document.getElementById("signOut");
 let profile = document.getElementById("profile");
 let signInContainer = document.getElementById("signInContainer");
+let credits = document.getElementById("credits"); 
 
 const authenticateReq = async (token) => {
   const url = `https://kristinaborgolivier.me/auth?token=${token}`;
@@ -75,9 +76,23 @@ async function loadGoogleLogin() {
     auth2.attachClickHandler(
       signInButton,
       {},
-      function (googleUser) {
-        authenticateReq(googleUser.getAuthResponse().id_token);
-      },
+      async function (googleUser) {
+        const email = await authenticateReq(googleUser.getAuthResponse().id_token);
+        if(email != null){
+          const url = "/login?email="+email;
+          const headers = {
+           "Content-Type": "text/html",
+           "Access-Control-Allow-Origin": "*",
+         };
+         const response = await axios.post(url,headers);
+         if (response.data.result === "exists") {
+           console.log("Found email in database: " + email);
+         } else {
+           console.log("Account has been created for "+ email);
+         }
+         credits.innerHTML = "Credits: "+response.data.credits;
+        }
+       },
       function (error) {
         alert(
           "Error: " + JSON.parse(JSON.stringify(error, undefined, 2)).error
