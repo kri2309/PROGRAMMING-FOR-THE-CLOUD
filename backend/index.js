@@ -93,7 +93,7 @@ app.post("/login", (req, res) => {
     else{
       CreateUser(email);
       console.log("created user");
-      res.send({ result: "created", reason: "Created email", credits: 8});
+      res.send({ result: "created", reason: "Created email", credits: response[0].credits});
     }
   });
 });
