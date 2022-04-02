@@ -81,7 +81,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
   const email = req.query.email;
   console.log("recieved email getting user");
   GetUser(email).then((response)=>{
