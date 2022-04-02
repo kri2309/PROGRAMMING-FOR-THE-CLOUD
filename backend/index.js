@@ -84,6 +84,7 @@ app.get("/", (req, res) => {
 app.post("/login",  async function(req, res) {
   const email = req.query.email;
   console.log("recieved email getting user");
+
   GetUser(email).then( async function(response){
     if(response.length > 0){
       console.log("found user");
@@ -91,8 +92,8 @@ app.post("/login",  async function(req, res) {
 
     }
     else{
-      await CreateUser(email);
-      console.log("created user");
+      const r = await CreateUser(email);
+      console.log("created user" +r);
       res.send({ result: "created", reason: "Created email", credits: response[0].credits});
     }
   });
