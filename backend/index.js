@@ -81,19 +81,19 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/login", (req, res) => {
+app.post("/login",  async function(req, res) {
   const email = req.query.email;
   console.log("recieved email getting user");
-  GetUser(email).then((response)=>{
+  GetUser(email).then( async function(response){
     if(response.length > 0){
       console.log("found user");
       res.send({ result: "exists", reason: "Found email", credits: response[0].credits});
 
     }
     else{
-      CreateUser(email);
+      await CreateUser(email);
       console.log("created user");
-      res.send({ result: "created", reason: "Created email", credits: response[0].credits});
+      res.send({ result: "created", reason: "Created email", credits: 8});
     }
   });
 });
