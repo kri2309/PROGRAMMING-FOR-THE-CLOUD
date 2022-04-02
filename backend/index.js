@@ -93,8 +93,7 @@ app.post("/login",  async function(req, res) {
     }
     else{
       const r = await CreateUser(email);
-      console.log("created user" +r.email+ r.credits);
-      res.send({ result: "created", reason: "Created email", credits: response[0].credits});
+      res.send({ result: "created", reason: "Created email", credits:10});
     }
   });
 });
