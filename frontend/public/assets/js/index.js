@@ -77,7 +77,10 @@ async function loadGoogleLogin() {
       signInButton,
       {},
       async function (googleUser) {
+        console.log("hell0");
         const email = await authenticateReq(googleUser.getAuthResponse().id_token);
+        console.log(email);
+
         if(email != null){
           const url = "/login?email="+email;
           const headers = {
