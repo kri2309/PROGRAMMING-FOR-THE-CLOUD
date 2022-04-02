@@ -1,10 +1,10 @@
-import Express, { response } from "express";
+import Express from "express";
 import cors from "cors";
 import https from "https";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
-import { GetUser, CreateUser} from "./db.js";
+
 import auth from "./routes/auth.js";
 import upload from "./routes/upload.js";
 
@@ -74,19 +74,6 @@ app.use("/auth", auth);
 
 //route upload traffic to upload.js
 app.use("/upload", upload);
-
-app.get("/login", (req, res) => {
-  const email = req.query.email;
-  GetUser(email).then((response)=>{
-    if(response.length > 0){
-      res.send({ result: "exists", reason: "Found email", credits: response[0].credits});
-    }
-    else{
-      CreateUser(email);
-      res.send({ result: "created", reason: "Created email", credits: response[0].credits});
-    }
-  });
-});
 
 //Delivering index.html;
 app.get("/", (req, res) => {

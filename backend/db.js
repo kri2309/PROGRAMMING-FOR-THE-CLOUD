@@ -25,21 +25,7 @@ export async function GetDocument(collection, valueType, value) {
   return data;
 }
 
-
-export async function CreateUser(email) {
-  const docRef = db.collection("users").doc();
-  return await docRef.set({
-    email: email,
-    credit: 10,
-  });
-}
-
-export async function GetUser(email) {
-  const docRef = db.collection("userData");
-  const snapshot = await docRef.where("email", "==", email).get();
-  let data = [];
-  snapshot.forEach((doc) => {
-    data.push(doc.data());
-  });
-  return data;
+export function HashPassword(password) {
+  const secret = "i<3PfC";
+  return createHmac("sha256", password).update(secret).digest("hex");
 }

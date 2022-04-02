@@ -40,7 +40,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     await storage.bucket(bucketname).upload(req.file.path, {
     destination: "pending/" + req.file.originalname,
-    });
+  });
 
     //Convert to base64
     //Send to PDF Conversion API
