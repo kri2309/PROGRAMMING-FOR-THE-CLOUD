@@ -10,11 +10,7 @@ export default auth;
 
 auth.route("/").post((req, res) => {
   const token = req.query.token;
-  client
-    .verifyIdToken({
-      idToken: token,
-      audience: CLIENT_ID,
-    })
+  validateToken(token)
     .catch((error) => {
       console.log(error);
       res.send({ status: "401" });
@@ -44,3 +40,11 @@ auth.route("/").post((req, res) => {
       }
     });
 });
+
+
+export const validateToken = async (token) => {
+  return await client.verifyIdToken({
+    idToken: token,
+    audience:CLIENT_ID,
+  });
+};
