@@ -13,7 +13,8 @@ const home = Express.Router();
 
 home.route("/").get((req,res) => {
     const token = res.query.token;
-    validateToken(token).then((ticket) => {
+    validateToken(token)
+    .then((ticket) => {
         if (ticket.getPayload().name !=null){
             res.sendFile(path.join(__dirname, "../../frontend/home.html"));
 
@@ -21,7 +22,7 @@ home.route("/").get((req,res) => {
             res.redirect("/");
         }
     }).catch((error) => {
-        res.send({status:"401"});
+        res.redirect("/");
    
     });
 });
