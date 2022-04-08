@@ -32,7 +32,7 @@ const authenticateReq = async (token) => {
     loading="lazy"
   />` + name;
 
-    document.getElementById("home-container").innerHTML = '<a class="nav-link active" aria-current="page" href="/">Home</a>'
+    document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
     document.getElementById("picture").src = picture;
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
