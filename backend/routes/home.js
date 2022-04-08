@@ -18,7 +18,7 @@ home.route("/").get((req,res) => {
             res.sendFile(path.join(__dirname, "../../frontend/home.html"));
 
         } else{
-            res.send({status:"401"});
+            res.redirect("/");
         }
     }).catch((error) => {
         res.send({status:"401"});
