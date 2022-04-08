@@ -27,7 +27,7 @@ auth.route("/").post((req, res) => {
         res.send({ status: "401" });
       }
     }).catch((error)=> {
-      console.log(error);
+      console.log("Token expired");
       res.send({ status: "401" });
     });;
 });

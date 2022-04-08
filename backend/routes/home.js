@@ -13,6 +13,7 @@ const home = Express.Router();
 
 home.route("/").get((req,res) => {
     const token = res.query.token;
+
     validateToken(token)
     .then((ticket) => {
         if (ticket.getPayload().name !=null){
@@ -22,6 +23,7 @@ home.route("/").get((req,res) => {
             res.redirect("/");
         }
     }).catch((error) => {
+        console.log("Token expired");
         res.redirect("/");
    
     });
