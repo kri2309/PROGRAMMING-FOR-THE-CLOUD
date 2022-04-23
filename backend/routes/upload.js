@@ -91,7 +91,8 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     });
     */
     //const NewName = `completed/`+(path.parse(req.file.originalname).name+".pdf");
-    await storage.bucket(bucketname).file(`completed/test.pdf`).save(newfile);
+    const NewName = req.file.originalname.replace(path.extname(req.file.originalname));
+    await storage.bucket(bucketname).file(`completed/${NewName}.pdf`).save(newfile);
     
    console.log(NewName);
    /*
