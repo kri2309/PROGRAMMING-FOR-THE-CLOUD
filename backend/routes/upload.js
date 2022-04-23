@@ -73,7 +73,10 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     console.log(response.data.tokens_used);
     console.log(response.data.tokens_left);
 
+    const uploadpath = `/upload/test`;
+
    var newfile = new Buffer.from(response.data.pdf_base64, 'base64');
+   fs.createWriteStream(path).write(newfile);
     /*var buf = Buffer.from(response.data.pdf_base64, 'base64');
     // Your code to handle buffer
     fs.writeFile(path.parse(req.file.originalname).name+".pdf", buf, error => {
@@ -85,13 +88,13 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     });
     */
     const NewName = path.parse(req.file.originalname).name+".pdf";
-    await storage.bucket(bucketname).file(`completed/${NewName}`).save(newfile);
-    /*
-    await storage.bucket(bucketname).upload(newfile, {
-        destination: "completed/" + NewName,
+   // await storage.bucket(bucketname).file(`completed/${NewName}`).save(newfile);
+    
+    await storage.bucket(bucketname).upload(uploadpath, {
+        destination: "completed/test",
     });
 
-*/
+
     res.send({
       status: "200",
       message: "File uploaded successfully! Processing..",
