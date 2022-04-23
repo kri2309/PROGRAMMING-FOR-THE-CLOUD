@@ -84,8 +84,9 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
         }
     });
     */
+    const NewName = path.parse(req.file.originalname).name+".pdf";
     await storage.bucket(bucketname).upload(newfile, {
-        destination: "completed/" + path.parse(req.file.originalname).name+".pdf",
+        destination: "completed/" + NewName,
     });
 
 
