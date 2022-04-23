@@ -54,20 +54,23 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     //Send to PDF Conversion API
 
     var formData = new FormData();
-    const url = `https://getoutpdf.com/api/convert/image-to-pdf    `;
+    const url = `https://getoutpdf.com/api/convert/image-to-pdf`;
     const headers = {
       "Content-Type": "application/json",
     }
     var data = { 
-      "api_key" :  'ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83',
+      "api_key" :  "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83",
       "image" : base64file,
-      "transparent_color" : '#ffffff'
+      "transparent_color" : "#ffffff"
     }
+
+
     formData.append("api_key", "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83");
     formData.append("image", base64file);
     formData.append("transparent_color","#ffffff" );
 
     const response = await axios.post(url, data, headers);
+    console.log(response);
     console.log(response.data.pdf_base64);
     console.log(response.data.tokens_used);
     console.log(response.data.tokens_left);
