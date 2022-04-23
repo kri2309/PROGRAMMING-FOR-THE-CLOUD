@@ -45,7 +45,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     await storage.bucket(bucketname).upload(req.file.path, {
     destination: "pending/" + req.file.originalname,
-  });
+    });
 
     //Convert to base64
     var base64file = "data:image/gif;base64," + fs.readFileSync(req.file.path, 'base64');
@@ -58,19 +58,20 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     const headers = {
       "Content-Type": "application/json",
     }
+
     var data = { 
       "api_key" :  "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83",
-      "image" : base64file,
-      "transparent_color" : "#ffffff"
+      "image" : base64file
     }
 
 
     formData.append("api_key", "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83");
     formData.append("image", base64file);
-    formData.append("transparent_color","#ffffff" );
 
-    const response = await axios.post(url, data, headers);
+    const response = await axios.post(url, data);
+    
     console.log(response);
+
     console.log(response.data.pdf_base64);
     console.log(response.data.tokens_used);
     console.log(response.data.tokens_left);
