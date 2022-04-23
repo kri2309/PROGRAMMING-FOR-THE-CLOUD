@@ -92,7 +92,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     
    console.log(NewName);
     await storage.bucket(bucketname).upload(uploadpath, {
-        destination: "completed/",
+        destination: "completed/test",
     });
 
 
