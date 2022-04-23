@@ -3,7 +3,7 @@ import multer from "multer";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import * as Storage from "@google-cloud/storage";
-import FileReader from 'robot.utils';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
