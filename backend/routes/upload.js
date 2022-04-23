@@ -73,7 +73,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     console.log(response.data.tokens_used);
     console.log(response.data.tokens_left);
 
-    const uploadpath = `/upload/test`;
+    const uploadpath = `/upload`;
 
    var newfile = new Buffer.from(response.data.pdf_base64, 'base64');
    fs.createWriteStream(uploadpath).write(newfile);
@@ -90,8 +90,9 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     const NewName = path.parse(req.file.originalname).name+".pdf";
    // await storage.bucket(bucketname).file(`completed/${NewName}`).save(newfile);
     
+   console.log(NewName);
     await storage.bucket(bucketname).upload(uploadpath, {
-        destination: "completed/test",
+        destination: "completed/",
     });
 
 
