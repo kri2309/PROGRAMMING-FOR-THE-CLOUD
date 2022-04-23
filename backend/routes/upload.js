@@ -3,7 +3,7 @@ import multer from "multer";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import * as Storage from "@google-cloud/storage";
-import FileReader from "filereader";
+import fs from 'fs/promises'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -46,22 +46,14 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     //Convert to base64
 
-    var reader = new FileReader();
-    console.log("next");
+    var base64str = base64_encode('nodejs-logo.png');
+    console.log(base64str);
     
-    reader.onload = function () {
-      base64String = reader.result.replace("data:", "")
-          .replace(/^.+,/, "");
-
-      imageBase64Stringsep = base64String;
-
-      // alert(imageBase64Stringsep);
-      console.log(base64String);
-  }
-  reader.readAsDataURL(req.file.path);
+    var base64file = "data:image/gif;base64," + fs.readFileSync(file, 'base64');
+    
 
   console.log("Base64String about to be printed");
-  alert(base64String);
+  alert(base64file);
 
     //Send to PDF Conversion API
     res.send({
