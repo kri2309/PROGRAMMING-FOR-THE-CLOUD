@@ -77,7 +77,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     const uploadpath = `/uploads`;
 
-   var newfile = new Buffer.from(response_64 , 'base64');
+   const newfile = new Buffer.from(response_64 , 'base64');
    console.log(newfile);
   // fs.createWriteStream(uploadpath).write(newfile);
     /*var buf = Buffer.from(response.data.pdf_base64, 'base64');
