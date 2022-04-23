@@ -72,7 +72,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     
     console.log(response);
 
-    console.log(response.data.pdf_base64);
+    console.log(response.data);
     console.log(response.data.tokens_used);
     console.log(response.data.tokens_left);
 
