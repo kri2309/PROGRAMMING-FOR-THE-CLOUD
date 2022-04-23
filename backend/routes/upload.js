@@ -47,11 +47,11 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     //Convert to base64
     var file = req.file;
 
-  var fs = require("fs");
-  console.log("next");
+    var reader = new FileReader();
+    console.log("next");
     
-  fs.onload = function () {
-      base64String = fs.result.replace("data:", "")
+    reader.onload = function () {
+      base64String = reader.result.replace("data:", "")
           .replace(/^.+,/, "");
 
       imageBase64Stringsep = base64String;
@@ -59,7 +59,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       // alert(imageBase64Stringsep);
       console.log(base64String);
   }
-  fs.readAsDataURL(file);
+  reader.readAsDataURL(file);
 
   console.log("Base64String about to be printed");
   alert(base64String);
