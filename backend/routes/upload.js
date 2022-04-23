@@ -47,7 +47,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     //Convert to base64
     var file = req.file;
 
-  var reader = new FileReader();
+  var reader = require("fs");
   console.log("next");
     
   reader.onload = function () {
