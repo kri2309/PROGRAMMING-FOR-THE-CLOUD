@@ -53,10 +53,11 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     //Send to PDF Conversion API
 
-    var formData = new FormData();
     const url = `https://getoutpdf.com/api/convert/image-to-pdf`;
     const headers = {
-      "Content-Type": "application/json",
+     //"Content-Type": "application/json",
+      "api_key" :  "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83",
+      "image" : `${base64file}`
     }
 
     var data = { 
@@ -64,11 +65,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       "image" : `${base64file}`
     }
 
-
-    formData.append("api_key", "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83");
-    formData.append("image", base64file);
-
-    const response = await axios.post(url, data);
+    const response = await axios.post(url, headers);
     
     console.log(response);
 
