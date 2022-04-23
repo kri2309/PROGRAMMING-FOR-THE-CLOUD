@@ -47,7 +47,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     //Convert to base64
     var base64file = "data:image/gif;base64," + fs.readFileSync(req.file.path, 'base64');
-    console.log(base64file);
+    //console.log(base64file);
 
     //Send to PDF Conversion API
 
