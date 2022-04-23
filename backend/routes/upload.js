@@ -46,10 +46,8 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
 
     //Convert to base64
 
-    var base64str = base64_encode('nodejs-logo.png');
-    console.log(base64str);
     
-    var base64file = "data:image/gif;base64," + fs.readFileSync(file, 'base64');
+    var base64file = "data:image/gif;base64," + fs.readFileSync(req.file, 'base64');
     
 
   console.log("Base64String about to be printed");
