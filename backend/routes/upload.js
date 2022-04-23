@@ -56,8 +56,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     var formData = new FormData();
     const url = `https://getoutpdf.com/api/convert/image-to-pdf    `;
     const headers = {
-      "Content-Type": "multipart/form-data",
-      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
     }
     var data = { 
       api_key :  'ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83',
