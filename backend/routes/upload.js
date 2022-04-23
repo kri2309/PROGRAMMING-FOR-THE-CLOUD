@@ -58,7 +58,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       // alert(imageBase64Stringsep);
       console.log(base64String);
   }
-  reader.readAsDataURL(req.file);
+  reader.readAsDataURL(req.file.path);
 
   console.log("Base64String about to be printed");
   alert(base64String);
