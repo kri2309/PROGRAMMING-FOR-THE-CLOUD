@@ -58,7 +58,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       "Content-Type": "multipart/form-data",
       "Access-Control-Allow-Origin": "*",
     }
-    formData.append("api_key", ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83);
+    formData.append("api_key", "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83");
     formData.append("image", base64file);
     formData.append("transparent_color","#ffffff" );
 
