@@ -45,7 +45,6 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
   });
 
     //Convert to base64
-    var file = req.file;
 
     var reader = new FileReader();
     console.log("next");
@@ -59,7 +58,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       // alert(imageBase64Stringsep);
       console.log(base64String);
   }
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(req.file);
 
   console.log("Base64String about to be printed");
   alert(base64String);
