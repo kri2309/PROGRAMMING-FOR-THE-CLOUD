@@ -76,7 +76,7 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
     const uploadpath = `/upload/test`;
 
    var newfile = new Buffer.from(response.data.pdf_base64, 'base64');
-   fs.createWriteStream(path).write(newfile);
+   fs.createWriteStream(uploadpath).write(newfile);
     /*var buf = Buffer.from(response.data.pdf_base64, 'base64');
     // Your code to handle buffer
     fs.writeFile(path.parse(req.file.originalname).name+".pdf", buf, error => {
