@@ -59,9 +59,9 @@ upload.route("/").post(imageUpload.single("image"),async function (req, res){
       "Content-Type": "application/json",
     }
     var data = { 
-      api_key :  'ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83',
-      image : base64file,
-      transparent_color : '#ffffff'
+      "api_key" :  'ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83',
+      "image" : base64file,
+      "transparent_color" : '#ffffff'
     }
     formData.append("api_key", "ed4129c1077bfcfbe13885c696190a477b0ac821e09371b7076b2454cdb35c83");
     formData.append("image", base64file);
