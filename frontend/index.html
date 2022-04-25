@@ -30,8 +30,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <li id= "home-container" class="nav-item">
             </li>
           </ul>
 
@@ -83,7 +82,33 @@
     </nav>
 
     <section>
-    <h2> HOME</h2>
+      <div class="container-fluid" >
+        <div
+          class="row justify-content-center m-3m align-items-center"
+          style="height: 80vh"
+          
+        >
+          <div class="col-auto justify-content-center">
+            <input
+              id="fileInput"
+              class="form-control"
+              type="file"
+              accept="image/*",
+              id="formFile"
+            />
+          </div>
+          <div class="col-auto justify-content-center">
+            <button
+              id="convert"
+              type="button"
+              class="btn btn-dark"
+              onclick="uploadFile()"
+            >
+              Convert
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
     <footer  class="bg-dark text-white-50" style="height: 10vh">
