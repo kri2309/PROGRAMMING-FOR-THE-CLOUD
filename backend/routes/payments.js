@@ -13,7 +13,7 @@ const payments = Express.Router();
 
 payments.route("/payments").get((req,res) => {
  
- res.sendFile(path.join(__dirname, "../../frontend/payments.html"));
+ res.sendFile(path.join(__dirname, "../../frontend/public/payments.html"));
 
  $(function() {
     $('[data-toggle="tooltip"]').tooltip()
