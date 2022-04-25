@@ -2,7 +2,17 @@ let signInButton = document.getElementById("signIn");
 let signOutButton = document.getElementById("signOut");
 let profile = document.getElementById("profile");
 let signInContainer = document.getElementById("signInContainer");
-let credits = document.getElementById("credits"); 
+let credits = document.getElementById("credits");
+let user_name = "";
+
+const selectFile = () => {
+  if (user_name) {
+    document.getElementById("fileInput").click();
+  } else {
+    alert("Error: You need to login first!");
+  }
+};
+
 
 const authenticateReq = async (token) => {
   const url = `https://kristinaborgolivier.me/auth?token=${token}`;
@@ -14,6 +24,7 @@ const authenticateReq = async (token) => {
   const status = response.data.status;
 
   if (status == 200) {
+    user_name = response.data.name;
     const name = response.data.name;
     const email = response.data.email;
     const picture = response.data.picture;
