@@ -7,7 +7,7 @@ let user_name = "";
 
 const selectFile = () => {
   if (user_name) {
-    document.getElementById("fileInput").click();
+    uploadFile()
   } else {
     alert("Error: You need to login first!");
   }
