@@ -11,13 +11,22 @@ const __dirname = dirname(__filename);
 
 const payments = Express.Router();
 
-payments.route("/payments").get((req,res) => {
- 
- res.sendFile(path.join(__dirname, "../../frontend/public/payments.html"));
+payments.route("/").get((req,res) => {
+    const token = req.query.token;
 
- $(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-    })
+    validateToken(token)
+    .then((ticket) => {
+        if (ticket.getPayload().name !=null){
+            res.sendFile(path.join(__dirname, "../../frontend/payments.html"));
+
+        } else{
+            res.redirect("/");
+        }
+    }).catch((error) => {
+        console.log("Token expired");
+        res.redirect("/");
+   
+    });
 });
 
 export default payments;

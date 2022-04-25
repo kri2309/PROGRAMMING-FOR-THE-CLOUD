@@ -44,6 +44,8 @@ const authenticateReq = async (token) => {
   />` + name;
 
     document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
+    document.getElementById("payments-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/payments?token=${token}">Buy Credits</a>`
+
     document.getElementById("picture").src = picture;
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
@@ -71,6 +73,7 @@ async function loadGoogleLogin() {
       .signOut()
       .then(() => {
         document.getElementById("home-container").innerHTML = " ";
+        document.getElementById("payments-container").innerHTML = " ";
         profile.style.display = "none";
         signInContainer.style.display = "inline";
         console.log("User signed out.");
