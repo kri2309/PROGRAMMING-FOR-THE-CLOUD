@@ -8,6 +8,7 @@ import { GetUser, CreateUser} from "./db.js";
 import auth from "./routes/auth.js";
 import upload from "./routes/upload.js";
 import home from "./routes/home.js";
+import payments from "./routes/payments.js";
 
 const DEV = false;
 const PORT = DEV ? 80 : 443;
@@ -78,6 +79,7 @@ app.use("/upload", upload);
 
 app.use("/home", home);
 
+app.use("/payments", payments);
 
 //Delivering index.html;
 app.get("/", (req, res) => {
