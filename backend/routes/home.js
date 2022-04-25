@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 
 const home = Express.Router();
 
-home.route("/").get((req,res) => {
+home.route("/home").get((req,res) => {
     const token = req.query.token;
 
     validateToken(token)

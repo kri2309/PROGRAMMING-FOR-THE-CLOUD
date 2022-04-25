@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 
 const payments = Express.Router();
 
-payments.route("/").get((req,res) => {
+payments.route("/payments").get((req,res) => {
  
  res.sendFile(path.join(__dirname, "../../frontend/payments.html"));
 

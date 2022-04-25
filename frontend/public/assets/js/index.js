@@ -13,9 +13,6 @@ const selectFile = () => {
   }
 };
 
-$(function() {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
 
 const authenticateReq = async (token) => {
   const url = `https://kristinaborgolivier.me/auth?token=${token}`;
