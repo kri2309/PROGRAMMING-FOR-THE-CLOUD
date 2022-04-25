@@ -90,17 +90,13 @@
         >
           <div class="col-auto justify-content-center">
             <input 
-              href="javascript:selectFile();"
               id="fileInput"
               class="form-control"
               type="file"
               accept="image/*",
               id="formFile"
+              onclick="selectFile()"
             />
-            <div class="mb-3">
-              <label for="formFile" id="fileInput" class="form-label">Choose File</label>
-              <input class="form-control" type="file" onclick="selectFile()" disabled>
-            </div>
           </div>
           <div class="col-auto justify-content-center">
             <button
