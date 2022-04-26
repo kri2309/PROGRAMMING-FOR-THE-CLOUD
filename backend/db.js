@@ -41,6 +41,8 @@ export async function GetUser(email) {
   let data = [];
   snapshot.forEach((doc) => {
     data.push(doc.data());
+    console.log(data);
   });
   return data;
+  
 }
