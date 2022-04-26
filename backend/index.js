@@ -81,6 +81,8 @@ app.use("/home", home);
 
 app.use("/payments", payments);
 
+
+
 //Delivering index.html;
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
