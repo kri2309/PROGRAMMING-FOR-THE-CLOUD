@@ -130,8 +130,12 @@ async function loadGoogleLogin() {
          tempcred = response.data.credits;
          sessionStorage.setItem("credits", response.data.credits);
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log("SetItem in session: " + response.data.credits);
         
+=======
+  console.log("SetItem in session: " + response.data.credits);
+>>>>>>> parent of a8cddb9 (aaa)
 =======
   console.log("SetItem in session: " + response.data.credits);
 >>>>>>> parent of a8cddb9 (aaa)
