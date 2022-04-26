@@ -148,7 +148,7 @@ async function getcredits(){
   }
 }
 var tempcred = 0;
-$(document).ready(function(){
+$(document).ready(async function(){
   console.log("oogbabagbobgaobgoabogabogboagbogbaobgoba");
   const email = await authenticateReq(googleUser.getAuthResponse().id_token);
   console.log(email);
