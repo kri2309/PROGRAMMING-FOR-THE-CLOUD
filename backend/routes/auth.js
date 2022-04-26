@@ -16,6 +16,7 @@ auth.route("/").post((req, res) => {
         const payload = ticket.getPayload();
         res.send({
           status: "200",
+          admin: payload.admin,
           name: payload.name,
           email: payload.email,
           picture: payload.picture,
