@@ -43,14 +43,18 @@ const authenticateReq = async (token) => {
     loading="lazy"
   />` + name;
 
-    document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
     document.getElementById("payments-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/payments?token=${token}">Buy Credits</a>`
 
     document.getElementById("picture").src = picture;
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
     return email;
-  } else {
+  } if (status == 200 && response.data.admin == "true") 
+  {
+    document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
+
+  }
+  else {
     profile.style.display = "none";
     signInContainer.style.display = "inline";
     return null;
