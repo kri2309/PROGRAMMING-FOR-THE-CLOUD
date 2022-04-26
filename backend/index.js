@@ -92,7 +92,7 @@ app.post("/login",  async function(req, res) {
 
   GetUser(email).then( async function(response){
     if(response.length > 0){
-      console.log("found user");
+      console.log("found user "+response[0].credits );
       res.send({ result: "exists", reason: "Found email", credits: response[0].credits, admin: response[0].admin});
 
     }
