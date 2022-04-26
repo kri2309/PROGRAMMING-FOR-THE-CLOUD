@@ -51,7 +51,11 @@ const authenticateReq = async (token) => {
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
     console.log(`admin: ${admin}, isAdmin:${isAdmin}`);
-    
+    if (isAdmin == "true") 
+  {
+    document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
+    console.log("Heyllo wow am admin!!");
+  }
     return email;
   } 
   else {
@@ -125,8 +129,12 @@ async function loadGoogleLogin() {
          credits.innerHTML = "Credits: "+response.data.credits;
          tempcred = response.data.credits;
          sessionStorage.setItem("credits", response.data.credits);
+<<<<<<< HEAD
         console.log("SetItem in session: " + response.data.credits);
         
+=======
+  console.log("SetItem in session: " + response.data.credits);
+>>>>>>> parent of a8cddb9 (aaa)
         }
        },
       function (error) {
