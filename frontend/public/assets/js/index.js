@@ -129,6 +129,7 @@ async function loadGoogleLogin() {
          credits.innerHTML = "Credits: "+response.data.credits;
          tempcred = response.data.credits;
          sessionStorage.setItem("credits", response.data.credits);
+        console.log("SetItem in session: " + response.data.credits);
         }
        },
       function (error) {
