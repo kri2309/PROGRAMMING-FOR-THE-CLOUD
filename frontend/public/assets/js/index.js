@@ -23,7 +23,7 @@ const authenticateReq = async (token) => {
   const response = await axios.post(url, headers);
   const status = response.data.status;
 
-  if (status == 200) {
+  if (status == 200 && response.data.admin == "false") {
     user_name = response.data.name;
     const name = response.data.name;
     const email = response.data.email;
