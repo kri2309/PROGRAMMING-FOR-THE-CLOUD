@@ -53,7 +53,7 @@ const authenticateReq = async (token) => {
     if (isAdmin == "true") 
   {
     document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
-
+    console.log("Heyllo wow am admin!!");
   }
     return email;
   } 
