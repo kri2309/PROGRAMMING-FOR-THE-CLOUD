@@ -50,12 +50,13 @@ const authenticateReq = async (token) => {
     document.getElementById("picture").src = picture;
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
-    return email;
-  } if (status == 200 && isAdmin == "true") 
+    if (isAdmin == "true") 
   {
     document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
 
   }
+    return email;
+  } 
   else {
     profile.style.display = "none";
     signInContainer.style.display = "inline";
