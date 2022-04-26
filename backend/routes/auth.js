@@ -1,8 +1,7 @@
 import Express from "express";
 import { OAuth2Client } from "google-auth-library";
 
-const CLIENT_ID =
-  "924492803178-ga7q7qvqllu5ons0kn2iu7699a0udi0q.apps.googleusercontent.com";
+const CLIENT_ID = "924492803178-ga7q7qvqllu5ons0kn2iu7699a0udi0q.apps.googleusercontent.com";
 const auth = Express.Router();
 const client = new OAuth2Client(CLIENT_ID);
 
@@ -17,7 +16,7 @@ auth.route("/").post((req, res) => {
         console.log(`payload admin: ${payload.admin}`);
         res.send({
           status: "200",
-          admin: payload.admin,
+          admin:"true",
           name: payload.name,
           email: payload.email,
           picture: payload.picture,
