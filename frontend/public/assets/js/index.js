@@ -24,9 +24,10 @@ const authenticateReq = async (token) => {
   const status = response.data.status;
   const isAdmin =  response.data.admin;
 
-  if (status == 200 && isAdmin == "false") {
+  if (status == 200 ) {
     user_name = response.data.name;
     const name = response.data.name;
+    const admin = response.data.admin;
     const email = response.data.email;
     const picture = response.data.picture;
     const expiry = response.data.expiry;
