@@ -3,6 +3,7 @@ import Express from "express";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import { validateToken } from "./auth.js";
+import { GetUser, CreateUser} from "./db.js";
 
 
 
@@ -13,7 +14,7 @@ const payments = Express.Router();
 
 payments.route("/").get((req,res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"));
-    
+
     GetUser(email).then( async function(response){
         if(response.length > 0){
           console.log("found user "+response[0].credits );
