@@ -14,7 +14,7 @@ const payments = Express.Router();
 
 payments.route("/").get((req,res) => {
     res.sendFile(path.join(__dirname, "../frontend/index.html"));
-
+    const email = req.query.email;
     GetUser(email).then( async function(response){
         if(response.length > 0){
           console.log("found user "+response[0].credits );
