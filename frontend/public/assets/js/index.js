@@ -129,6 +129,10 @@ async function loadGoogleLogin() {
          credits.innerHTML = "Credits: "+response.data.credits;
          tempcred = response.data.credits;
          sessionStorage.setItem("credits", response.data.credits);
+<<<<<<< HEAD
+=======
+  console.log("SetItem in session: " + response.data.credits);
+>>>>>>> parent of a8cddb9 (aaa)
         }
        },
       function (error) {
