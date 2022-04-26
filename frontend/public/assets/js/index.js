@@ -113,18 +113,20 @@ async function loadGoogleLogin() {
          const response = await axios.post(url,headers);
          if (response.data.result === "exists") {
            console.log("Found email in database: " + email);
-         } else {
+         } 
+         if (response.data.admin == "true" || response.data.admin) 
+        {
+          document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
+          console.log("Heyllo wow am admin!!");
+        }
+         else {
            console.log("Account has been created for "+ email);
          }
          credits.innerHTML = "Credits: "+response.data.credits;
          tempcred = response.data.credits;
          sessionStorage.setItem("credits", response.data.credits);
         console.log("SetItem in session: " + response.data.credits);
-        if (response.data.admin == "true" || response.data.admin) 
-        {
-          document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
-          console.log("Heyllo wow am admin!!");
-        }
+        
         }
        },
       function (error) {
