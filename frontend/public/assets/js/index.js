@@ -22,8 +22,9 @@ const authenticateReq = async (token) => {
   };
   const response = await axios.post(url, headers);
   const status = response.data.status;
+  const isAdmin =  response.data.admin;
 
-  if (status == 200 && response.data.admin == "false") {
+  if (status == 200 && isAdmin == "false") {
     user_name = response.data.name;
     const name = response.data.name;
     const email = response.data.email;
@@ -49,7 +50,7 @@ const authenticateReq = async (token) => {
     document.cookie = `token=${token};expires=${expiry}`;
     console.log(`${name} signed in successfully.`);
     return email;
-  } if (status == 200 && response.data.admin == "true") 
+  } if (status == 200 && isAdmin == "true") 
   {
     document.getElementById("home-container").innerHTML = `<a class="nav-link active" aria-current="page" href="/home?token=${token}">Home</a>`
 
