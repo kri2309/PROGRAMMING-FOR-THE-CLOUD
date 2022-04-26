@@ -21,10 +21,6 @@ payments.route("/").get((req,res) => {
           res.send({ result: "exists", reason: "Found email", credits: response[0].credits, admin: response[0].admin});
     
         }
-        else{
-          const r = await CreateUser(email);
-          res.send({ result: "created", reason: "Created email", credits:10, admin: false});
-        }
       });
     
 });
