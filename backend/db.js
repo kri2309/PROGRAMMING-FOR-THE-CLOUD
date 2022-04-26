@@ -30,7 +30,8 @@ export async function CreateUser(email) {
   const docRef = db.collection("userData").doc();
   return await docRef.set({
     credits: 10,
-    email: email
+    email: email,
+    admin : false
   });
 }
 
