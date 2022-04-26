@@ -93,12 +93,12 @@ app.post("/login",  async function(req, res) {
   GetUser(email).then( async function(response){
     if(response.length > 0){
       console.log("found user");
-      res.send({ result: "exists", reason: "Found email", credits: response[0].credits});
+      res.send({ result: "exists", reason: "Found email", credits: response[0].credits, admin: response[0].admin});
 
     }
     else{
       const r = await CreateUser(email);
-      res.send({ result: "created", reason: "Created email", credits:10});
+      res.send({ result: "created", reason: "Created email", credits:10, admin: false});
     }
   });
 });
