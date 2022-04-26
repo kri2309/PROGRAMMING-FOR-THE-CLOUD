@@ -150,5 +150,5 @@ async function getcredits(){
 var tempcred = 0;
 $(document).ready(function(){
   credits = document.getElementById("credits");
-  credits.innerHTML = "Credits: "+response.data.credits;
+  credits.innerHTML = "Credits: "+tempcred;
 });
