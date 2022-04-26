@@ -146,10 +146,12 @@ async function getcredits(){
   credits.innerHTML = "Credits: "+response.data.credits;
   tempcred = response.data.credits;
   sessionStorage.setItem("credits", response.data.credits);
+  console.log("SetItem in session: " + response.data.credits);
   }
 }
 var tempcred = 0;
 $(document).ready(function(){
   credits = document.getElementById("credits");
   credits.innerHTML = "Credits: "+ sessionStorage.getItem("credits");
+  console.log("GetItem in session: " + sessionStorage.getItem("credits"));
 });
