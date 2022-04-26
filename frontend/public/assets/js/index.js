@@ -113,6 +113,7 @@ async function loadGoogleLogin() {
            console.log("Account has been created for "+ email);
          }
          credits.innerHTML = "Credits: "+response.data.credits;
+         tempcred = response.data.credits;
         }
        },
       function (error) {
@@ -123,3 +124,9 @@ async function loadGoogleLogin() {
     );
   });
 }
+
+var tempcred = 0;
+$(document).ready(function(){
+  credits = document.getElementById("credits");
+  credits.innerHTML = "Credits: "+response.data.credits;
+});
