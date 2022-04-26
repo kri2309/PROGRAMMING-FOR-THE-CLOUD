@@ -145,30 +145,11 @@ async function getcredits(){
   credits = document.getElementById("credits");
   credits.innerHTML = "Credits: "+response.data.credits;
   tempcred = response.data.credits;
+  sessionStorage.setItem("credits", response.data.credits);
   }
 }
 var tempcred = 0;
-$(document).ready(async function(){
-  console.log("oogbabagbobgaobgoabogabogboagbogbaobgoba");
-  const email = await authenticateReq(googleUser.getAuthResponse().id_token);
-  console.log(email);
-
-  if(email != null){
-  const url = "/login?email="+email;
-  const headers = {
-    "Content-Type": "text/html",
-    "Access-Control-Allow-Origin": "*",
-  };
-  const response = await axios.post(url,headers);
-  if (response.data.result === "exists") {
-    console.log("Found email in database: " + email);
-  } else {
-    console.log("Account has been created for "+ email);
-  }
+$(document).ready(function(){
   credits = document.getElementById("credits");
-  credits.innerHTML = "Credits: "+response.data.credits;
-  tempcred = response.data.credits;
-  }
-  //credits = document.getElementById("credits");
-  //credits.innerHTML = "Credits: "+tempcred;
+  credits.innerHTML = "Credits: "+ sessionStorage.getItem("credits");
 });
