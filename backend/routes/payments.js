@@ -3,7 +3,7 @@ import Express from "express";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import { validateToken } from "./auth.js";
-import { GetUser, CreateUser} from "./db.js";
+import { GetUser, CreateUser} from "../backend/db.js";
 
 
 
